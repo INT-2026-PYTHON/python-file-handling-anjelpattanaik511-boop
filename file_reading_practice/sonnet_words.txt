@@ -80,3 +80,23 @@ see
 this
 gives
 life
+sowpods_set = set()
+
+with open("sowpods.txt", "r") as file:
+    for word in file:
+        sowpods_set.add(word.strip().lower())
+
+missing_words = set()
+
+with open("sonnet_words.txt", "r") as file:
+    for word in file:
+        word = word.strip().lower()
+
+        if word not in sowpods_set:
+            missing_words.add(word)
+
+result = sorted(missing_words)
+
+print("Words in sonnet but not in sowpods:")
+print(result)
+print("Total:", len(result))
